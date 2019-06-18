@@ -1,16 +1,23 @@
 
-# spcrimr
+# `spcrimr`: tidy data from Secretaria de Segurança Pública - São Paulo, Brazil
 
 `spcrimr` is a simple package to download and use tidy data from
 Secretaria de Sweegurança Pública, state of Sao Paulo, Brazil.
 
+With this package you can easily download tables from [SSP’s
+website](http://www.ssp.sp.gov.br/Estatistica/Pesquisa.aspx).
+
+The `download_table_sp()` function request tables from [SSP’s
+website](http://www.ssp.sp.gov.br/Estatistica/Pesquisa.aspx) with `R`
+and displays it in the conlose.
+
 ## Installation
 
-You can install abjMaps from github with:
+You can install `spcrimr` from github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("abjur/abjMaps")
+devtools::install_github("rdurl0/spcrimr")
 ```
 
 ## Example
@@ -21,103 +28,99 @@ devtools::install_github("abjur/abjMaps")
 library(spcrimr)
 library(tibble)
 
-ssp_ocorrencias_crimes
-#> # A tibble: 10,320 x 22
-#>    nm_municip municipio   ano furto_de_veiculo furto_outros
-#>    <chr>          <int> <dbl>            <int>        <int>
-#>  1 ADAMANTINA         1  2002                0          319
-#>  2 ADAMANTINA         1  2003                3          277
-#>  3 ADAMANTINA         1  2004                2          420
-#>  4 ADAMANTINA         1  2005                6          376
-#>  5 ADAMANTINA         1  2006               14          294
-#>  6 ADAMANTINA         1  2007                7          327
-#>  7 ADAMANTINA         1  2008                5          397
-#>  8 ADAMANTINA         1  2009                2          286
-#>  9 ADAMANTINA         1  2010                4          227
-#> 10 ADAMANTINA         1  2011               10          245
-#> # ... with 10,310 more rows, and 17 more variables:
-#> #   homicidio_culposo_outros <int>,
-#> #   homicidio_culposo_por_acidente_de_transito <int>,
-#> #   homicidio_doloso <int>,
-#> #   homicidio_doloso_por_acidente_de_transito <int>, latrocinio <int>,
-#> #   lesao_corporal_culposa_outras <int>,
-#> #   lesao_corporal_culposa_por_acidente_de_transito <int>,
-#> #   lesao_corporal_dolosa <int>, roubo_a_banco <int>,
-#> #   roubo_de_carga <int>, roubo_de_veiculo <int>,
-#> #   tentativa_de_homicidio <int>, total_de_estupro <int>,
-#> #   total_de_roubo_outros <int>, vitimas_em_homicidio_doloso <int>,
-#> #   vitimas_em_homicidio_doloso_por_acidente_de_transito <int>,
-#> #   vitimas_em_latrocinio <int>
+glimpse(ssp_ocorrencias_crimes)
+#> Observations: 10,320
+#> Variables: 22
+#> $ nm_municip                                           <chr> "ADAMANTI...
+#> $ municipio                                            <int> 1, 1, 1, ...
+#> $ ano                                                  <dbl> 2002, 200...
+#> $ furto_de_veiculo                                     <int> 0, 3, 2, ...
+#> $ furto_outros                                         <int> 319, 277,...
+#> $ homicidio_culposo_outros                             <int> 0, 0, 0, ...
+#> $ homicidio_culposo_por_acidente_de_transito           <int> 3, 4, 2, ...
+#> $ homicidio_doloso                                     <int> 1, 1, 4, ...
+#> $ homicidio_doloso_por_acidente_de_transito            <int> 0, 0, 0, ...
+#> $ latrocinio                                           <int> 1, 0, 0, ...
+#> $ lesao_corporal_culposa_outras                        <int> 29, 21, 1...
+#> $ lesao_corporal_culposa_por_acidente_de_transito      <int> 160, 168,...
+#> $ lesao_corporal_dolosa                                <int> 322, 344,...
+#> $ roubo_a_banco                                        <int> 0, 0, 0, ...
+#> $ roubo_de_carga                                       <int> 0, 1, 0, ...
+#> $ roubo_de_veiculo                                     <int> 0, 1, 1, ...
+#> $ tentativa_de_homicidio                               <int> 5, 1, 3, ...
+#> $ total_de_estupro                                     <int> 0, 0, 1, ...
+#> $ total_de_roubo_outros                                <int> 4, 7, 5, ...
+#> $ vitimas_em_homicidio_doloso                          <int> 1, 1, 4, ...
+#> $ vitimas_em_homicidio_doloso_por_acidente_de_transito <int> 0, 0, 0, ...
+#> $ vitimas_em_latrocinio                                <int> 1, 0, 0, ...
 
-ssp_produtividade_policial
-#> # A tibble: 10,320 x 16
-#>    nm_municip municipio   ano armas_de_fogo_a~ flagrantes_lavr~
-#>    <chr>          <int> <dbl>            <int>            <int>
-#>  1 ADAMANTINA         1  2002               20               54
-#>  2 ADAMANTINA         1  2003               23               58
-#>  3 ADAMANTINA         1  2004               16               49
-#>  4 ADAMANTINA         1  2005               12               36
-#>  5 ADAMANTINA         1  2006               18               43
-#>  6 ADAMANTINA         1  2007               12               38
-#>  7 ADAMANTINA         1  2008                8               64
-#>  8 ADAMANTINA         1  2009                8               44
-#>  9 ADAMANTINA         1  2010               18               34
-#> 10 ADAMANTINA         1  2011               11               68
-#> # ... with 10,310 more rows, and 11 more variables:
-#> #   infratores_apreendidos_em_flagrante <int>,
-#> #   infratores_apreendidos_por_mandado <int>,
-#> #   ocorrências_de_apreensao_de_entorpecentes1 <int>,
-#> #   ocorrências_de_porte_de_entorpecentes <int>,
-#> #   ocorrências_de_porte_ilegal_de_arma <int>,
-#> #   ocorrências_de_tráfico_de_entorpecentes <int>,
-#> #   pessoas_presas_em_flagrante <int>, pessoas_presas_por_mandado <int>,
-#> #   prisões_efetuadas <int>,
-#> #   tot_de_inquéritos_policiais_instaurados <int>,
-#> #   veiculos_recuperados <int>
+glimpse(ssp_produtividade_policial)
+#> Observations: 10,320
+#> Variables: 16
+#> $ nm_municip                                 <chr> "ADAMANTINA", "ADAM...
+#> $ municipio                                  <int> 1, 1, 1, 1, 1, 1, 1...
+#> $ ano                                        <dbl> 2002, 2003, 2004, 2...
+#> $ armas_de_fogo_apreendidas                  <int> 20, 23, 16, 12, 18,...
+#> $ flagrantes_lavrados                        <int> 54, 58, 49, 36, 43,...
+#> $ infratores_apreendidos_em_flagrante        <int> 8, 9, 4, 3, 6, 7, 3...
+#> $ infratores_apreendidos_por_mandado         <int> 0, 0, 1, 0, 0, 1, 0...
+#> $ ocorrências_de_apreensao_de_entorpecentes1 <int> 11, 9, 1, 7, 15, 6,...
+#> $ ocorrências_de_porte_de_entorpecentes      <int> 22, 28, 25, 29, 40,...
+#> $ ocorrências_de_porte_ilegal_de_arma        <int> 8, 7, 7, 4, 2, 2, 2...
+#> $ ocorrências_de_tráfico_de_entorpecentes    <int> 12, 12, 9, 12, 20, ...
+#> $ pessoas_presas_em_flagrante                <int> 66, 78, 60, 46, 58,...
+#> $ pessoas_presas_por_mandado                 <int> 18, 25, 10, 68, 107...
+#> $ prisões_efetuadas                          <int> 54, 58, 49, 36, 43,...
+#> $ tot_de_inquéritos_policiais_instaurados    <int> 366, 332, 273, 290,...
+#> $ veiculos_recuperados                       <int> 0, 3, 1, 0, 6, 4, 2...
 
-ssp_variables_names
-#> # A tibble: 32 x 3
-#>    variaveis_tidy               variaveis_raw                dataset       
-#>    <chr>                        <chr>                        <chr>         
-#>  1 armas_de_fogo_apreendidas    Nº DE ARMAS DE FOGO APREEND~ produtividade~
-#>  2 flagrantes_lavrados          Nº DE FLAGRANTES LAVRADOS    produtividade~
-#>  3 infratores_apreendidos_em_f~ Nº DE INFRATORES APREENDIDO~ produtividade~
-#>  4 infratores_apreendidos_por_~ Nº DE INFRATORES APREENDIDO~ produtividade~
-#>  5 ocorrências_de_apreensao_de~ OCORRÊNCIAS DE APREENSÃO DE~ produtividade~
-#>  6 ocorrências_de_porte_de_ent~ OCORRÊNCIAS DE PORTE DE ENT~ produtividade~
-#>  7 ocorrências_de_porte_ilegal~ OCORRÊNCIAS DE PORTE ILEGAL~ produtividade~
-#>  8 ocorrências_de_tráfico_de_e~ OCORRÊNCIAS DE TRÁFICO DE E~ produtividade~
-#>  9 pessoas_presas_em_flagrante  Nº DE PESSOAS PRESAS EM FLA~ produtividade~
-#> 10 pessoas_presas_por_mandado   Nº DE PESSOAS PRESAS POR MA~ produtividade~
-#> # ... with 22 more rows
+glimpse(ssp_variables_names)
+#> Observations: 32
+#> Variables: 3
+#> $ variaveis_tidy <chr> "armas_de_fogo_apreendidas", "flagrantes_lavrad...
+#> $ variaveis_raw  <chr> "Nº DE ARMAS DE FOGO APREENDIDAS", "Nº DE FLAGR...
+#> $ dataset        <chr> "produtividade_policial", "produtividade_polici...
 
-seade # a database from SEADE
-#> # A tibble: 40 x 2
-#>      ano data               
-#>    <int> <list>             
-#>  1  1980 <tibble [645 x 92]>
-#>  2  1981 <tibble [645 x 92]>
-#>  3  1982 <tibble [645 x 92]>
-#>  4  1983 <tibble [645 x 92]>
-#>  5  1984 <tibble [645 x 92]>
-#>  6  1985 <tibble [645 x 92]>
-#>  7  1986 <tibble [645 x 92]>
-#>  8  1987 <tibble [645 x 92]>
-#>  9  1988 <tibble [645 x 92]>
-#> 10  1989 <tibble [645 x 92]>
-#> # ... with 30 more rows
+glimpse(seade) # a database from SEADE
+#> Observations: 40
+#> Variables: 2
+#> $ ano  <int> 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 198...
+#> $ data <list> [<tbl_df[645 x 92]>, <tbl_df[645 x 92]>, <tbl_df[645 x 9...
 ```
 
 ### Functions
 
+The `download_table_sp` function download tables from [SSP’s
+website](http://www.ssp.sp.gov.br/Estatistica/Pesquisa.aspx)
+
 ``` r
 download_table_sp(ano = 2019,
                   municipio = 500,
-                  type = "ctl00$conteudo$btnMensal")
+                  type = "ctl00$conteudo$btnMensal") %>% glimpse()
+#> Observations: 23
+#> Variables: 16
+#> $ Natureza  <chr> "HOMICÍDIO DOLOSO (2)", "Nº DE VÍTIMAS EM HOMICÍDIO ...
+#> $ Jan       <int> 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 1, 0, 1, 1, 1...
+#> $ Fev       <int> 1, 1, 0, 0, 0, 0, 0, 0, 4, 1, 0, 0, 0, 0, 0, 0, 2, 1...
+#> $ Mar       <int> 1, 1, 0, 0, 1, 0, 0, 0, 7, 1, 0, 0, 0, 0, 0, 0, 5, 5...
+#> $ Abr       <int> 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2...
+#> $ Mai       <chr> "...", "...", "...", "...", "...", "...", "...", ".....
+#> $ Jun       <chr> "...", "...", "...", "...", "...", "...", "...", ".....
+#> $ Jul       <chr> "...", "...", "...", "...", "...", "...", "...", ".....
+#> $ Ago       <chr> "...", "...", "...", "...", "...", "...", "...", ".....
+#> $ Set       <chr> "...", "...", "...", "...", "...", "...", "...", ".....
+#> $ Out       <chr> "...", "...", "...", "...", "...", "...", "...", ".....
+#> $ Nov       <chr> "...", "...", "...", "...", "...", "...", "...", ".....
+#> $ Dez       <chr> "...", "...", "...", "...", "...", "...", "...", ".....
+#> $ Total     <int> 2, 2, 0, 0, 1, 0, 0, 0, 18, 2, 0, 0, 0, 1, 0, 1, 10,...
+#> $ municipio <dbl> 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 50...
+#> $ ano       <dbl> 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019...
 ```
 
 ``` r
-chave_list("a vector")
+insert_munic_idx("any vector") %>% glimpse()
+#> List of 1
+#>  $ : int [1:645] 1 2 3 4 5 6 7 8 9 10 ...
 ```
 
 ## Citation

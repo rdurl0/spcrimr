@@ -10,17 +10,22 @@ knitr::opts_chunk$set(
 )
 ```
 
-# spcrimr
+# `spcrimr`: tidy data from Secretaria de Segurança Pública - São Paulo, Brazil
 
 `spcrimr` is a simple package to download and use tidy data from Secretaria de Sweegurança Pública, state of Sao Paulo, Brazil.
 
+With this package you can easily download tables from [SSP's website](http://www.ssp.sp.gov.br/Estatistica/Pesquisa.aspx).
+
+The `download_table_sp()` function request tables from [SSP's website](http://www.ssp.sp.gov.br/Estatistica/Pesquisa.aspx) with `R` and displays it in the conlose.
+
+
 ## Installation
 
-You can install abjMaps from github with:
+You can install `spcrimr` from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("abjur/abjMaps")
+devtools::install_github("rdurl0/spcrimr")
 ```
 
 ## Example
@@ -31,26 +36,28 @@ devtools::install_github("abjur/abjMaps")
 library(spcrimr)
 library(tibble)
 
-ssp_ocorrencias_crimes
+glimpse(ssp_ocorrencias_crimes)
 
-ssp_produtividade_policial
+glimpse(ssp_produtividade_policial)
 
-ssp_variables_names
+glimpse(ssp_variables_names)
 
-seade # a database from SEADE
+glimpse(seade) # a database from SEADE
 ```
 
 ### Functions
 
-```{r eval=FALSE}
+The `download_table_sp` function download tables from [SSP's website](http://www.ssp.sp.gov.br/Estatistica/Pesquisa.aspx)
+
+```{r}
 download_table_sp(ano = 2019,
                   municipio = 500,
-                  type = "ctl00$conteudo$btnMensal")
+                  type = "ctl00$conteudo$btnMensal") %>% glimpse()
 ```
 
 
-```{r eval=FALSE}
-chave_list("a vector")
+```{r}
+insert_munic_idx("any vector") %>% glimpse()
 ```
 
 
