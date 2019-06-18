@@ -2,5 +2,5 @@
 
 export("%>%")
 export(download_table_sp)
-export(insert_mucic_idx)
+export(insert_munic_idx)
 importFrom(magrittr,"%>%")

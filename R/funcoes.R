@@ -71,7 +71,7 @@ download_table_sp <- function(
 #'@return uma \code{list} com dois vetores igual a \code{vec}.
 #'
 #'@export
-insert_mucic_idx <- function(x, vec = seq(645)) {
+insert_munic_idx <- function(x, vec = seq(645)) {
 
   lista <- vector("list", length(x))
 
