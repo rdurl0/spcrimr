@@ -24,6 +24,7 @@
 #'@references \link[www.ssp.sp.gov.br/Estatistica/Pesquisa.aspx]{Secretaria de
 #'Seguranca Publica do estado de Sao Paulo}
 #'
+#'@export
 download_table_sp <- function(
   ano,
   municipio,
@@ -69,7 +70,8 @@ download_table_sp <- function(
 #'
 #'@return uma \code{list} com dois vetores igual a \code{vec}.
 #'
-chave_list <- function(x, vec = seq(645)) {
+#'@export
+insert_mucic_idx <- function(x, vec = seq(645)) {
 
   lista <- vector("list", length(x))
 
