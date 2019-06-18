@@ -12,5 +12,6 @@ Imports:
   magrittr,
   httr,
   rvest,
+  tidyverse,
   xml2
 RoxygenNote: 6.1.1
