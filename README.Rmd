@@ -29,9 +29,14 @@ devtools::install_github("abjur/abjMaps")
 
 ```{r}
 library(spcrimr)
+library(tibble)
+
 ssp_ocorrencias_crimes
+
 ssp_produtividade_policial
+
 ssp_variables_names
+
 seade # a database from SEADE
 ```
 
