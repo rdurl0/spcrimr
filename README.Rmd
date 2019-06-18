@@ -1,0 +1,70 @@
+---
+output: github_document
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# spcrimr
+
+`spcrimr` is a simple package to download and use tidy data from Secretaria de Sweegurança Pública, state of Sao Paulo, Brazil.
+
+## Installation
+
+You can install abjMaps from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("abjur/abjMaps")
+```
+
+## Example
+
+### Data
+
+```{r}
+library(spcrimr)
+ssp_ocorrencias_crimes
+ssp_produtividade_policial
+ssp_variables_names
+seade # a database from SEADE
+```
+
+### Functions
+
+```{r eval=FALSE}
+download_table_sp(ano = 2019,
+                  municipio = 500,
+                  type = "ctl00$conteudo$btnMensal")
+```
+
+
+```{r eval=FALSE}
+chave_list("a vector")
+```
+
+
+## Citation
+
+To cite `spcrimr`, write `citation("spcrimr")`:
+
+```
+To cite package ‘spcrimr’ in publications use:
+
+  Raul de Sá Durlo (2019). spcrimr: tidy data from SSP-SP.
+  R package version 0.0.9000.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {spcrimr: tidy data from SSP-SP},
+    author = {Raul de Sá Durlo},
+    year = {2019},
+    note = {R package version 0.0.9000},
+  }
+```
