@@ -1,6 +1,6 @@
 Package: spcrimr
 Title: spcrimr: tidy data from SSP-SP.
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: person("Raul", "de Sá Durlo", email = "durlo.raul@gmail.com", role = c("aut", "cre"))
 Description: Use and webscraping data from Secretaria de Seguranca Publica do Estado de Sao Paulo, Brazil.
 Depends: R (>= 3.6.0)
