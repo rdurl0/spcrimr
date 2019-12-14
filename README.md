@@ -2,7 +2,7 @@
 # `spcrimr`: tidy data from Secretaria de Segurança Pública - São Paulo, Brazil
 
 `spcrimr` is a simple package to download and use tidy data from
-Secretaria de Sweegurança Pública, state of Sao Paulo, Brazil.
+Secretaria de Segurança Pública, state of Sao Paulo, Brazil.
 
 With this package you can easily download tables from [SSP’s
 website](http://www.ssp.sp.gov.br/Estatistica/Pesquisa.aspx).
