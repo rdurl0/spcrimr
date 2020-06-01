@@ -4,6 +4,8 @@
 `spcrimr` is a simple package to download and use tidy data from
 Secretaria de Segurança Pública, state of Sao Paulo, Brazil.
 
+`spcrimr` was inspired by [this post](https://www.curso-r.com/blog/2017-05-19-scrapper-ssp/) in Curso-R blog. Thank you guys!
+
 With this package you can easily download tables from [SSP’s
 website](http://www.ssp.sp.gov.br/Estatistica/Pesquisa.aspx).
 
